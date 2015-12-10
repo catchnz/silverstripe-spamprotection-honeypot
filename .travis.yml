@@ -21,8 +21,6 @@ matrix:
   allow_failures:
     - php: 7.0
   include:
-    - php: 5.3
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
     - php: 5.5
       env: DB=MYSQL CORE_RELEASE=master
     - php: 5.6
