@@ -30,6 +30,23 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers StudioBonito\SilverStripe\SpamProtection\Honeypot\FormField\HoneypotField::validate
      */
+    public function testInvalidTimeoutWithEmptyCaptcha()
+    {
+        $form = $this->getForm();
+        $validator = $this->getValidator();
+
+        $honeypotField = new HoneypotField('Captcha');
+        $honeypotField->setForm($form);
+        $honeypotField->setValue(null);
+
+        $valid = $honeypotField->validate($validator);
+
+        $this->assertFalse($valid);
+    }
+
+    /**
+     * @covers StudioBonito\SilverStripe\SpamProtection\Honeypot\FormField\HoneypotField::validate
+     */
     public function testValidWithEmptyCaptcha()
     {
         $form = $this->getForm();
@@ -37,6 +54,10 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
 
         $honeypotField = new HoneypotField('Captcha');
         $honeypotField->setForm($form);
+        $honeypotField->setValue(null);
+        
+        // we have to sleep for > 5s or the timeout will fail
+        sleep(6);
 
         $valid = $honeypotField->validate($validator);
 
