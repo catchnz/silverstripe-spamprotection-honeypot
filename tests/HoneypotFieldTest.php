@@ -57,7 +57,10 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
         $honeypotField->setValue(null);
         
         // we have to sleep for > 5s or the timeout will fail
-        sleep(6);
+        // or some reason the timestamp on travis is about 10s
+        // ahead of time so we add another 10s to what would have 
+        // otherwise been a reasonable value
+        sleep(16);
 
         $valid = $honeypotField->validate($validator);
 
