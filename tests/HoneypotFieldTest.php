@@ -37,7 +37,6 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
 
         $honeypotField = new HoneypotField('Captcha');
         $honeypotField->setForm($form);
-        $honeypotField->setValue(null);
 
         $valid = $honeypotField->validate($validator);
 
