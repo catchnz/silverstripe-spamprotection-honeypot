@@ -23,6 +23,10 @@ class HoneypotField extends \HiddenField
         $timeLimit = $this->stat('time_limit');
 
         $timestamp = $this->getForm()->getController()->getRequest()->postVar($this->getName() . '_Timestamp');
+        
+        echo $timeLimit . "\n";
+        echo $timestamp . "\n";
+        echo time() . "\n";
 
         if (!empty($this->value) || ($timeLimit > 0 && ($timestamp + $timeLimit) > time())) {
             $validator->validationError(
