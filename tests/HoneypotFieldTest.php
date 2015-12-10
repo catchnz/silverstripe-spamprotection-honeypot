@@ -22,6 +22,11 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
         $honeypotField->setForm($form);
         $honeypotField->setValue('foobar');
 
+        // we have to sleep for > 5s or the timeout will cause the fail rather than the value
+        // for some reason the timestamp on travis is about 10s ahead of time 
+        // so we add another 10s to what would have otherwise been a reasonable value
+        sleep(16);
+
         $valid = $honeypotField->validate($validator);
 
         $this->assertFalse($valid);
@@ -56,10 +61,9 @@ class HoneypotFieldTest extends \PHPUnit_Framework_TestCase
         $honeypotField->setForm($form);
         $honeypotField->setValue(null);
         
-        // we have to sleep for > 5s or the timeout will fail
-        // for some reason the timestamp on travis is about 10s
-        // ahead of time so we add another 10s to what would have 
-        // otherwise been a reasonable value
+        // we have to sleep for > 5s or the timeout will cause the fail rather than the value
+        // for some reason the timestamp on travis is about 10s ahead of time 
+        // so we add another 10s to what would have otherwise been a reasonable value
         sleep(16);
 
         $valid = $honeypotField->validate($validator);
