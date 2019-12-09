@@ -1,8 +1,11 @@
-<?php namespace StudioBonito\SilverStripe\SpamProtection\Honeypot\FormField;
+<?php
 
-use FormField;
+namespace StudioBonito\SilverStripe\SpamProtection\Honeypot\FormField;
 
-class HoneypotField extends \HiddenField
+use SilverStripe\Forms\FormField;
+use SilverStripe\Forms\HiddenField;
+
+class HoneypotField extends HiddenField
 {
     /**
      * The number of seconds before you can submit a valid request.

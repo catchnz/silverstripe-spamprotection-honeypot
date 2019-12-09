@@ -1,0 +1,3 @@
+mappings:
+  HoneypotField: StudioBonito\SilverStripe\SpamProtection\Honeypot\FormField\HoneypotField
+  HoneypotSpamProtector: StudioBonito\SilverStripe\SpamProtection\Honeypot\SpamProtector\HoneypotSpamProtector
